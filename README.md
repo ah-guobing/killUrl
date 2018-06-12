@@ -5,11 +5,11 @@ Nginx URL黑名单插件，将要禁止的URL存入Redis List结构中
 Nginx安装了Lua支持
 
 ## Nginx配置
-### Step1、在 server 配置节之上添加lua扩展
+- Step1、在 server 配置节之上添加lua扩展<br/>
 lua_package_path "/usr/local/nginx/conf/lua/lib/?.lua;;";<br />
 lua_package_cpath "/usr/local/nginx/conf/lua/lib/?.so;;";<br />
 
-### Step2、在需要使用的 server 里启用URL黑名单插件
+- Step2、在需要使用的 server 里启用URL黑名单插件<br />
 &#35; 当前站点的URL，如果是非80端口，则需要写上端口好，结尾不要带/<br />
 set $curURL "http://lua.com:90";<br />
 &#35; 存储URL黑名单的Redis Key<br />
@@ -21,7 +21,7 @@ set $redisPort "6379";<br />
 &#35; lua_code_cache off;<br />
 access_by_lua_file conf/lua/killURL.lua;<br />
 
-### Step3、重启Nginx
+- Step3、重启Nginx<br />
 &#35; service nginx restart
 
 
